@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerSpark｜浏览器体验</title>
+  <link rel="stylesheet" href="../site.css">
+  <style>
+    main { width: min(740px, calc(100% - 36px)); margin: 42px auto; }
+    h1 { font-size: clamp(32px, 7vw, 50px); line-height: 1.12; margin: 18px 0 12px; }
+    h2 { font-size: 22px; margin: 0 0 12px; }
+    p { margin: 8px 0; }
+    .intro, .result { color: var(--muted); }
+    section { padding: 22px; border: 1px solid var(--line); border-radius: 16px; margin-top: 18px; background: var(--panel); }
+    textarea { display: block; width: 100%; min-height: 92px; resize: vertical; background: var(--paper); padding: 10px; border: 1px solid var(--line); border-radius: 8px; margin: 5px 0 12px; }
+    button { background: var(--acid); color: #11170d; padding: 8px 13px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-right: 7px; margin-bottom: 7px; }
+    .result { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 8px; }
+    a { text-decoration: underline; }
+    :focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
+  </style>
+  <script type="module" src="./demo.js"></script>
+</head>
+<body>
+  <main>
+    <a href="../#ai">返回作品集</a>
+    <h1>CareerSpark 浏览器体验</h1>
+    <p class="intro">使用原项目的本地规则处理英文岗位和简历文本，并提供模板化面试反馈。文本留在当前页面，结果由浏览器计算，不调用在线模型。</p>
+    <section aria-labelledby="jd-heading">
+      <h2 id="jd-heading">岗位分析</h2>
+      <form id="jd-form">
+        <label for="jd">英文岗位描述</label>
+        <textarea id="jd" maxlength="10000" required placeholder="粘贴岗位描述，或填入示例"></textarea>
+        <button type="button" id="example">填入示例</button>
+        <button>分析岗位</button>
+      </form>
+      <p id="jd-result" class="result" aria-live="polite"></p>
+    </section>
+    <section aria-labelledby="resume-heading">
+      <h2 id="resume-heading">简历匹配</h2>
+      <form id="resume-form">
+        <label for="resume">英文简历文本</label>
+        <textarea id="resume" maxlength="12000" required></textarea>
+        <button>对照岗位要求</button>
+      </form>
+      <p id="resume-result" class="result" aria-live="polite"></p>
+    </section>
+    <section aria-labelledby="interview-heading">
+      <h2 id="interview-heading">模拟面试</h2>
+      <button type="button" id="start">开始一轮面试</button>
+      <p id="question" class="result" aria-live="polite"></p>
+      <form id="answer-form" hidden>
+        <label for="answer">你的回答</label>
+        <textarea id="answer" maxlength="4000" required></textarea>
+        <button>获取反馈与下一题</button>
+      </form>
+      <p id="feedback" class="result" aria-live="polite"></p>
+    </section>
+  </main>
+</body>
+</html>
